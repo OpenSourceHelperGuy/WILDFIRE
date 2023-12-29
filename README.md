@@ -1,4 +1,4 @@
-WILDFIRE is a lightning fast CLI designed to make basic website recon approachable for less technical users while retaining its usefulness enough for technical work.
+WILDFIRE is a lightning fast CLI designed to make basic website recon approachable for less technical users while retaining its usefulness for technical work.
 
 **Your IP will be present in Shodan's logs unless a VPN is used.**
 
