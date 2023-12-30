@@ -12,7 +12,7 @@ There are confirmed <b>DNS leaks</b>
 
 These are going to be fixed with a <a href="https://quad9.net/service/service-addresses-and-features#rec">DNS over HTTPS</a> Quad9 connection.
 
-A DNS query is made to the <b>target website</b> as well as to '<b>internetdb.shodan.io</b>'.
+A DNS query is made to the <b>target website</b> and to '<b>internetdb.shodan.io</b>'.
 
 
 
