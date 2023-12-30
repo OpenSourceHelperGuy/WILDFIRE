@@ -56,9 +56,8 @@ if __name__ == '__main__':
 
 def recon():
     while True:
-        web_target = input('\n \nWhich website do you want the IP for? [e.g example.com] ')
+        web_target = input('\n\nWhich website do you want the IP(s) for? [e.g example.com] ')
 
-        # scan_port = input('\nWhich port would you like to scan? ')
         def get_ips_for_host(host):
             socket.setdefaulttimeout(5) # Set socket time out to 5 seconds
             try:
