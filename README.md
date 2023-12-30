@@ -10,7 +10,7 @@ There are confirmed <b>DNS leaks</b>
 
 ![image](https://github.com/OpenSourceHelperGuy/WILDFIRE/assets/151247917/ea63b23a-ba46-4d36-9696-4cc7c152928b)
 
-These are going to be fixed with a <a href="https://quad9.net/service/service-addresses-and-features#rec">DNS over TLS</a>/<a href="https://quad9.net/service/service-addresses-and-features#rec">DNS over HTTPS</a> Quad9 connection.
+These are going to be fixed with a <a href="https://quad9.net/service/service-addresses-and-features#rec">DNS over HTTPS</a> Quad9 connection.
 
 A DNS query is made to the <b>target website</b> as well as to '<b>internetdb.shodan.io</b>'.
 
