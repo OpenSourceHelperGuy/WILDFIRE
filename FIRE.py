@@ -2,14 +2,17 @@ import sys
 import os
 import pprint
 import requests
-from colorama import Fore  # , Back, Style
+import time
+from colorama import Fore
 
 try:
     import win32gui
     import win32con
-except:
+except ImportError:
     pass
 
+
+###############################################
 
 def banner_print():
     banner = r'''
@@ -34,11 +37,12 @@ if __name__ == '__main__':
     except:
         pass
     # Maximise the screen
-    try:
-        hwnd = win32gui.GetForegroundWindow()
-        win32gui.ShowWindow(hwnd, win32con.SW_MAXIMIZE)
-    except:
-        pass
+    if sys.platform == "win32":
+        try:
+            hwnd = win32gui.GetForegroundWindow()
+            win32gui.ShowWindow(hwnd, win32con.SW_MAXIMIZE)
+        except:
+            pass
     banner_print()
 
 
@@ -49,42 +53,59 @@ def scan():
         if infinite == 1:
             # If the user has run the Shodan call once before ask them if they want to close the program
             if run_shodan_call_once == 1:
-                target = input("\nWhich IP do you want to scan? ['none' to quit] ")
+                target = input("\nWhich IP do you want to analyse? ['none' to quit] ")
                 if target.lower() == 'none':
                     sys.exit()
                 print('\n')
+
             if run_shodan_call_once == 0:
-                target = input('\nWhich IP do you want to scan? [Run WILDFIRE first] [e.g 93.184.216.34] ')
+                target = input('\nWhich IP do you want to analyse? [Run WILDFIRE first] [e.g 93.184.216.34] ')
                 print('\n')
 
         if infinite == 0:
             # If the user has run the Shodan call once before ask them if they want to close the program but if FIRE.py is called from main.py
             if run_shodan_call_once == 1:
-                target = input("\nWhich IP do you want to scan? ['none' to quit] ")
+                target = input("\nWhich IP do you want to analyse? ['none' to quit] ")
                 if target.lower() == 'none':
                     sys.exit()
                 print('\n')
 
-            if  run_shodan_call_once == 0:
-                target = input('\nWhich IP do you want to scan? [e.g 93.184.216.34] ')
+            if run_shodan_call_once == 0:
+                target = input('\nWhich IP do you want to analyse? [e.g 93.184.216.34] ')
                 print("\n")
 
-        # ip = socket.gethostbyname(target)
-
         def shodan_call():
+
             try:
-                scanned = requests.get(f"https://internetdb.shodan.io/{target}").json()
+                scanned = requests.get(f"https://internetdb.shodan.io/{target}", verify=True, allow_redirects=False, timeout=5).json()
+                # verify=True // verifies certificate from trusted CA // using OCSP?? if so then should be disabled as information leakage
                 pprint.pprint(scanned)
                 run_shodan_call_once = 1
-            except:
-                print('Failed to reach https://internetdb.shodan.io \nCheck your internet connection.\nThe website could be inaccessible.')
 
+            except requests.exceptions.SSLError:
+                print('TLS certificate verification has failed.\nThis could be due to a MiTM attack.')
+                time.sleep(4)
+                print('\nAborting the program now...\n')
+                time.sleep(2)
+
+                if sys.platform == "win32":
+                    try:
+                        os.system('powershell pause')
+                    except:
+                        pass
+                sys.exit()
+
+            except requests.exceptions.RequestException:
+                print('Failed to reach https://internetdb.shodan.io \nCheck your internet connection.\nThe website could be inaccessible.\n')
                 # if infinite == 0:
-                print('\n')
-                try:
-                    os.system('powershell pause')
-                except:
-                    pass
+
+                if sys.platform == "win32":
+                    try:
+                        os.system('powershell pause')
+                    except:
+                        pass
+            finally:
+                pass # ???
                 # from FIRE import scan # ???
 
         shodan_call()
