@@ -1,5 +1,5 @@
 # WILDFIRE
-WILDFIRE is a lightning fast CLI designed to make basic website recon approachable for less technical users while retaining its usefulness for technical work.
+WILDFIRE is a lightning fast CLI designed to make basic website recon approachable for less technical users while retaining its usefulness for technical work. (Now with 100% more Shodan 😳)
 
 **Your IP will be present in Shodan's logs unless a VPN is used.**
 
@@ -18,4 +18,4 @@ A DNS query is made to the <b>target website</b> as well as to '<b>internetdb.sh
 
 There are <b>SNI leaks</b>
 TLS 1.3 is used however the Server Name Indication in the Client Hello is leaked in plaintext. ![image](https://github.com/OpenSourceHelperGuy/WILDFIRE/assets/151247917/cf92824a-5bf8-432b-a138-7497ab5ac275)
-This can be fixed by implementing <a href="https://en.wikipedia.org/wiki/Server_Name_Indication#Encrypted_Client_Hello">Encrypted Client Hello (ECH)</a> however this also depends on the web server to support ECH and so isn't as simple of a fix as DoH. And there is no formal implementation of ECH in python so currently the only solution to this is to use (a) VPN/Tor.
+This can be fixed by implementing <a href="https://en.wikipedia.org/wiki/Server_Name_Indication#Encrypted_Client_Hello">Encrypted Client Hello (ECH)</a> however this also depends on the web server to support ECH and so is not as simple of a fix as DoH. And there is no formal implementation of ECH in Python so currently the only solution to this is to use (a) VPN/Tor.
