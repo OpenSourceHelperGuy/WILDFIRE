@@ -1,7 +1,7 @@
 # WILDFIRE
 WILDFIRE is a lightning fast CLI designed to make basic website recon approachable for less technical users while retaining its usefulness for technical work. (Now with 100% more Shodan 😳)
 
-**Your IP will be present in Shodan's logs unless a VPN is used.**
+**Your IP will be logged by Shodan unless a VPN is used.**
 
 If you would rather use Tor than your own IP or a VPN that is something that can be done by running the tor standalone program as a system-wide SOCKS5 proxy, more advice can be found in FIRE.py.
 
@@ -12,7 +12,7 @@ There are confirmed <b>DNS leaks</b>
 
 These are going to be fixed with a <a href="https://quad9.net/service/service-addresses-and-features#rec">DNS over HTTPS</a> Quad9 connection.
 
-A DNS query is made to the <b>target website</b> as well as to '<b>internetdb.shodan.io</b>'.
+A DNS query is made to the <b>target website</b> and to '<b>internetdb.shodan.io</b>'.
 
 
 
