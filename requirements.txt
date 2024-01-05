@@ -1,5 +1,4 @@
 requests
-pystyle
 colorama
 # pystyle vs colorama // one of these will be removed eventually
 pywin32; sys_platform == "win32"

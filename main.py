@@ -1,3 +1,5 @@
+# TODO -  response for any example.com input is 1 check quad9 DoH bs
+# can't be bothered rn
 import os
 import sys
 import socket
@@ -8,7 +10,7 @@ import dns.query
 # from dns.doh import DoHSession # Fix at 3
 import requests
 # import random # could be used to add random splash messages under the banner
-from pystyle import Colors, Colorate, Write
+#from pystyle import Colors, Colorate, Write - pystyle was found to contain malware
 
 # https://github.com/spyboy-productions/CloakQuest3r - Helps with Cloudflare bypasses
 if sys.platform == "win32":
