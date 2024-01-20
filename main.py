@@ -1,16 +1,18 @@
 # TODO -  response for any example.com input is 1 check quad9 DoH bs
 # can't be bothered rn
+# https://pypi.org/project/cve-lookup/ - useful // or add https://www.opencve.io/cve/{CVE} as a link instead
 import os
 import sys
 import socket
 import pprint
 import time
+from colorama import Fore, init
+init()
 import dns.message
 import dns.query
 # from dns.doh import DoHSession # Fix at 3
 import requests
 # import random # could be used to add random splash messages under the banner
-#from pystyle import Colors, Colorate, Write - pystyle was found to contain malware
 
 # https://github.com/spyboy-productions/CloakQuest3r - Helps with Cloudflare bypasses
 if sys.platform == "win32":
@@ -50,11 +52,13 @@ def banner_print():
          !!@!*   !!@!*      !!    !!     !  !!     !!!  !!        !!    !@  ! !!    !!   !  !
          !!!!    !!!!       :!    !:    !!  !:    !!:*  :!        :!    !!   *!!!   !!     !!
           :       :       :!: : : :: !: : : : : : :   :!: :     :!: : : :!:  : : :: :::!: : :
-                                                                                             
+          'Now uses Shodan!                                                 Is your VPN on?'
+              
             '''
-    Write.Print(banner, Colors.red_to_yellow, interval=0.01)
-    print(Colorate.Horizontal(Colors.red_to_yellow,
-                              'Now uses Shodan!                                                 Is your VPN on?', 1))
+
+    colored_banner = Fore.RED + banner + Fore.RESET
+
+    print(colored_banner)
 
 
 if __name__ == '__main__':
